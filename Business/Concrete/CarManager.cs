@@ -19,16 +19,20 @@ namespace Business.Concrete
         public List<Car> GetAll()
         {
            return _carDal.GetAll();
-        }
-
-        public Car GetById(int CarId)
-        {
-            return _carDal.GetById(CarId);
-        }
+        }   
 
         public void Add(Car car)
         {
-            _carDal.Add(car);
+            if (car.DailyPrice>0)
+            {
+                _carDal.Add(car);
+                Console.WriteLine(car.Description + " eklendi");
+            }
+            else
+            {
+                Console.WriteLine("Araba günlülk fiyatı 0'dan büyük olmaldır");
+            }
+            
         }
 
         public void Update(Car car)
@@ -39,6 +43,16 @@ namespace Business.Concrete
         public void Delete(Car car)
         {
             _carDal.Delete(car);
+        }
+
+        public List<Car> GetCarsByBrandId(int brandId)
+        {
+            return _carDal.GetAll(c=>c.BrandId==brandId);
+        }
+
+        public List<Car> GetCarsByColorId(int colorId)
+        {
+            return _carDal.GetAll(c => c.ColorId == colorId);
         }
     }
 }
