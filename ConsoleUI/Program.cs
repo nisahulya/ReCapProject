@@ -74,13 +74,15 @@ namespace ConsoleUI
 
             //Console.WriteLine(colorManager.GetById(2).ColorName); 
 
-            foreach (var car in carManager.GetCarDetails())
-            {
-                Console.WriteLine(car.Description +" / " + car.BrandName + " / " + car.ColorName +
-                    " / " + car.DailyPrice);
-            }
+            //foreach (var car in carManager.GetCarDetails())
+            //{
+            //    Console.WriteLine(car.Description +" / " + car.BrandName + " / " + car.ColorName +
+            //        " / " + car.DailyPrice);
+            //}
 
+            //brandManager.Add( new Brand { BrandId=4, BrandName="Volvo" });
 
+            Console.WriteLine(colorManager.GetAll().Message); 
 
 
         }

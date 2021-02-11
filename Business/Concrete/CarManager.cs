@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Entities.DTOs;
@@ -17,48 +19,89 @@ namespace Business.Concrete
             _carDal = carDal;
         }
 
-        public List<Car> GetAll()
+        public IDataResult<List<Car>> GetAll()
         {
-           return _carDal.GetAll();
+            if (DateTime.Now.Hour == 22)
+            {
+                return new ErrorDataResult<List<Car>>(Messages.MaintanceTime);
+            }
+           
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(),Messages.CarsListed);
         }   
 
-        public void Add(Car car)
+        public IResult Add(Car car)
         {
-            if (car.DailyPrice>0)
+            if (car.DailyPrice<0)
             {
-                _carDal.Add(car);
-                Console.WriteLine(car.Description + " eklendi");
+                return new ErrorResult(Messages.DailyPriceInvalid);
             }
             else
             {
-                Console.WriteLine("Araba günlülk fiyatı 0'dan büyük olmaldır");
+                _carDal.Add(car);
+                return new SuccessResult(Messages.CarAdded);
+            }    
+        }
+
+        public IResult Update(Car car)
+        {
+            if (car.DailyPrice < 0)
+            {
+                return new ErrorResult(Messages.DailyPriceInvalid);
             }
-            
+            else
+            {
+                _carDal.Update(car);
+                return new SuccessResult(Messages.CarUpdated);
+            }
         }
 
-        public void Update(Car car)
+        public IResult Delete(Car car)
         {
-            _carDal.Update(car);
+            if (car.DailyPrice < 0)
+            {
+                return new ErrorResult(Messages.DailyPriceInvalid);
+            }
+            else
+            {
+                _carDal.Delete(car);
+                return new SuccessResult(Messages.CarDeleted);
+            }
         }
 
-        public void Delete(Car car)
+        public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            _carDal.Delete(car);
+            if (DateTime.Now.Hour == 22)
+            {
+                return new ErrorDataResult<List<Car>>(Messages.MaintanceTime);
+            }
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c=>c.BrandId==brandId),Messages.CarGottenByBrandId);
         }
 
-        public List<Car> GetCarsByBrandId(int brandId)
+        public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            return _carDal.GetAll(c=>c.BrandId==brandId);
+            if (DateTime.Now.Hour == 22)
+            {
+                return new ErrorDataResult<List<Car>>(Messages.MaintanceTime);
+            }
+            return new SuccessDataResult<List<Car>>(_carDal.GetAll(c => c.ColorId == colorId), Messages.CarGottenByColorId);
         }
 
-        public List<Car> GetCarsByColorId(int colorId)
+        public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            return _carDal.GetAll(c => c.ColorId == colorId);
+            if (DateTime.Now.Hour == 22)
+            {
+                return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintanceTime);
+            }
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.CarDetailsGotten);
         }
 
-        public List<CarDetailDto> GetCarDetails()
+        public IDataResult<Car> GetById(int carId)
         {
-            return _carDal.GetCarDetails();
+            if (DateTime.Now.Hour == 22)
+            {
+                return new ErrorDataResult<Car>(Messages.MaintanceTime);
+            }
+            return new SuccessDataResult<Car>(_carDal.Get(c=> c.CarId == carId), Messages.CarGottenById);
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -16,29 +18,64 @@ namespace Business.Concrete
             _colorDal = colorDal;
         }
 
-        public List<Color> GetAll()
+        public IDataResult<List<Color>> GetAll()
         {
-            return _colorDal.GetAll(); 
+            if (DateTime.Now.Hour == 00)
+            {
+                return new ErrorDataResult<List<Color>>(Messages.MaintanceTime);
+            }
+            
+            return new SuccessDataResult<List<Color>>(_colorDal.GetAll(), Messages.ColorsListed); 
         }
 
-        public Color GetById(int colorId)
+        public IDataResult<Color> GetById(int colorId)
         {
-            return _colorDal.Get(c => c.ColorId == colorId);
+            if (DateTime.Now.Hour == 22)
+            {
+                return new ErrorDataResult<Color>(Messages.MaintanceTime);
+            }
+            
+            return new SuccessDataResult<Color>(_colorDal.Get(c => c.ColorId == colorId), Messages.ColorGottenById);
         }
 
-        public void Add(Color color)
+        public IResult Add(Color color)
         {
-            _colorDal.Add(color);
+            if (color.ColorName.Length < 2)
+            {
+                return new ErrorResult(Messages.ColorNameInvalid);
+            }
+            else
+            {
+                _colorDal.Add(color);
+                return new SuccessResult(Messages.ColorAdded);
+            }
+            
         }
 
-        public void Update(Color color)
+        public IResult Update(Color color)
         {
-            _colorDal.Update(color);
+            if (color.ColorName.Length < 2)
+            {
+                return new ErrorResult(Messages.ColorNameInvalid);
+            }
+            else
+            {
+                _colorDal.Update(color);
+                return new SuccessResult(Messages.ColorUpdated);
+            }
         }
 
-        public void Delete(Color color)
+        public IResult Delete(Color color)
         {
-            _colorDal.Delete(color);
+            if (color.ColorName.Length < 2)
+            {
+                return new ErrorResult(Messages.ColorNameInvalid);
+            }
+            else
+            {
+                _colorDal.Delete(color);
+                return new SuccessResult(Messages.ColorDeleted);
+            }
         }
     }
 }
