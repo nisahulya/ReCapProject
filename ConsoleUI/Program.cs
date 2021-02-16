@@ -82,9 +82,18 @@ namespace ConsoleUI
 
             //brandManager.Add( new Brand { BrandId=4, BrandName="Volvo" });
 
-            Console.WriteLine(colorManager.GetAll().Message); 
+            ////Console.WriteLine(colorManager.GetAll().Message); 
 
+            //UserManager userManager = new UserManager(new EfUserDal());
+            //userManager.Add(new User { UserId=1, FirstName="ahmet", LastName="Doğan", Email="dfczx@sdf", Password="esfsd" });
 
+            //CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            //customerManager.Add(new Customer { CompanyName="AC ltd.şti" , CustomerId=1, UserId=1});
+
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            //rentalManager.Add(new Rental { CarId = 1, CustomerId = 1, RentalId = 1, RentDate = new DateTime(2010,11,11)  , ReturnDate=null  });
+            rentalManager.Add(new Rental { CarId = 1, CustomerId = 2, RentalId = 2, RentDate = new DateTime(2010, 12, 11), ReturnDate = new DateTime(2010, 12, 12) });
+            
         }
     }
 }
