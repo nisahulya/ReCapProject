@@ -15,5 +15,10 @@
     <ProjectReference Include="..\Entities\Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\NewFolder\" />
+  </ItemGroup>
+
 
 </Project>

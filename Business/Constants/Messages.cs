@@ -66,7 +66,7 @@ namespace Business.Constants
 
         public static string RentalDeleted = "Kiralama silindi";
 
-        public static string RentalsListed = "Kiralamalar Listelendi";
+        public static string RentalsListed = "Kiralamalar listelendi";
 
         public static string RentalGottenById = "Kiralama getirildi";
 
@@ -76,11 +76,25 @@ namespace Business.Constants
 
         public static string CustomerDeleted = "Müşteri silindi";
 
-        public static string CustomersListed = "Müşteriler Listelendi";
+        public static string CustomersListed = "Müşteriler listelendi";
 
         public static string CustomerGottenByUserId = "Müşteri kullanıcı id'sine göre getirildi";
 
         public static string NotReturned = "Araba Teslim edilmedi";
+
+        public static string CarImagesListed = "Araba resimleri listelendi";
+
+        public static string ExceedCarImagesNumber = "Araba resimleri sayısı 5'i aştı";
+
+        public static string WrongFileType = "Yanlış dosya tipi";
+
+        public static string CarImageAdded = "Araba resmi eklendi";
+
+        public static string NotExistFile = "Dosya bulunamadı";
+
+        public static string CarImagesGottenById = "Araba resmi id'ye göre getirilidi";
+
+        public static string NotFoundCarImage = "Araba resmi bulunamadı";
 
 
 

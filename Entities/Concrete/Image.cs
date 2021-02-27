@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Entities.Concrete
 {
-    public class Image : IEntity
+    public class Image 
     {
         public IFormFile Files { get; set; }
     }

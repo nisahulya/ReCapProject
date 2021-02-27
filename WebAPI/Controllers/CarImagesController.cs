@@ -21,13 +21,50 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult Add(CarImage carImage)
+        public IActionResult Add([FromForm] Image image, [FromForm] CarImage carImage)
         {
-            var result = _carImageService.Add(carImage);
+            var result = _carImageService.Add(image, carImage);
             if (result.Success)
             {
                 return Ok(result);
             }
+            return BadRequest(result);
+        }
+
+        [HttpPost("update")]
+        public IActionResult Update([FromForm] Image image, [FromForm] CarImage carImage)
+        {
+            var result = _carImageService.Update(image, carImage);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+
+
+        [HttpGet("getall")]
+        public IActionResult GetAll()
+        {
+            var result = _carImageService.GetAll();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int carImageId)
+        {
+            var result = _carImageService.GetById(carImageId);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
             return BadRequest(result);
         }
     }
