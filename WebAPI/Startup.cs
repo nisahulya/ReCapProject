@@ -42,6 +42,9 @@ namespace WebAPI
             services.AddSingleton<IUserDal, EfUserDal>();
             services.AddSingleton<IRentalService, RentalManager>();
             services.AddSingleton<IRentalDal, EfRentalDal>();
+            services.AddSingleton<ICarImageService, CarImageManager>();
+            services.AddSingleton<ICarImageDal, EfCarImageDal>();
+
 
         }
 
