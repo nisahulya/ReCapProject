@@ -96,10 +96,7 @@ namespace Business.Constants
 
         public static string NotFoundCarImage = "Araba resmi bulunamadı";
 
-
-
-
-
-
+        public static string CarImageUpdated = "Araba resmi güncellendi";
+        public static string DeletedCarImage = "Araba resmi başarıyla silindi";
     }
 }
