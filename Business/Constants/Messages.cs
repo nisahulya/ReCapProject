@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Constants
@@ -98,5 +100,17 @@ namespace Business.Constants
 
         public static string CarImageUpdated = "Araba resmi güncellendi";
         public static string DeletedCarImage = "Araba resmi başarıyla silindi";
+        public static string AuthorizationDenied = "Yetkiniz Yok";
+        public static string ClaimsGotten = "Claimler Getirildi";
+        public static string UserGottenByMail = "Kullanıcı mailine göre getirilidi";
+        public static string UserRegistered ="Kayıt Oldu";
+        public static string UserNotFound = "Kullanıcı Bulunamadı";
+        public static string PasswordError ="Parola Hatası";
+        public static string SuccessfulLogin = "Başarılı Giriş";
+        public static string UserAlreadyExists = "Kullanıcı mevcut";
+        public static string AccessTokenCreated = "Access token oluşturuldu";
+
+
+
     }
 }
