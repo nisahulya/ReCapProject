@@ -17,7 +17,7 @@ namespace ConsoleUI
 
             //carManager.Add(new Car { CarId = 1, BrandId = 1, ColorId = 1, DailyPrice = 50, Description = "Renault Araba", ModelYear = 2010 });
             //carManager.Add(new Car { CarId = 2, BrandId = 1, ColorId = 3, DailyPrice = 150, Description = "Opel Araba", ModelYear = 2015 });
-            //carManager.Add(new Car { CarId = 3, BrandId = 3, ColorId = 5, DailyPrice = 100, Description = "Wolksvagen Araba", ModelYear = 2018 });
+            //carManager.Delete(new Car { CarId = 3, BrandId = 3, ColorId = 5, DailyPrice = 100, Description = "Wolksvagen Araba", ModelYear = 2018 });
             //carManager.Add(new Car { CarId = 4, BrandId = 2, ColorId = 2, DailyPrice = 200, Description = "BMW Araba", ModelYear = 2009 });
 
 
@@ -63,6 +63,8 @@ namespace ConsoleUI
             //colorManager.Add(new Color { ColorId = 2, ColorName = "Sarı" });
             //colorManager.Add(new Color { ColorId = 3, ColorName = "Pembe" });
             //colorManager.Add(new Color { ColorId = 4, ColorName = "Mavi" });
+
+            //colorManager.Add(new Color {ColorName = "Bordo" });
 
             //colorManager.Update(new Color { ColorId = 4, ColorName = "Yeşil" });
 

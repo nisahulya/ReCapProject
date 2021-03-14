@@ -52,6 +52,9 @@ namespace WebAPI
             services.AddSingleton<ICarImageService, CarImageManager>();
             services.AddSingleton<ICarImageDal, EfCarImageDal>();
 
+
+            services.AddCors();
+
             var tokenOptions = Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -84,6 +87,8 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(builder => builder.WithOrigins("http://localhost:4201").AllowAnyHeader());
 
             app.UseHttpsRedirection();
 
