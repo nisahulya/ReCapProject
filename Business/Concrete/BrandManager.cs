@@ -22,7 +22,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Brand>> GetAll()
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 02)
             {
                 return new ErrorDataResult<List<Brand>>(Messages.MaintanceTime);
             }
@@ -32,7 +32,7 @@ namespace Business.Concrete
 
         public IDataResult<Brand> GetById(int brandId)
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 02)
             {
                 return new ErrorDataResult<Brand>(Messages.MaintanceTime);
             }

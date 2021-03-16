@@ -71,7 +71,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetCarsByBrandId(int brandId)
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 02)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintanceTime);
             }
@@ -80,7 +80,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 02)
             {
                 return new ErrorDataResult<List<Car>>(Messages.MaintanceTime);
             }
@@ -89,7 +89,7 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDto>> GetCarDetails()
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 02)
             {
                 return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintanceTime);
             }
@@ -100,7 +100,7 @@ namespace Business.Concrete
         [PerformanceAspect(5)]
         public IDataResult<Car> GetById(int carId)
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 02)
             {
                 return new ErrorDataResult<Car>(Messages.MaintanceTime);
             }

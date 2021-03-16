@@ -22,7 +22,7 @@ namespace Business.Concrete
 
         public IDataResult<List<Color>> GetAll()
         {
-            if (DateTime.Now.Hour == 00)
+            if (DateTime.Now.Hour == 02)
             {
                 return new ErrorDataResult<List<Color>>(Messages.MaintanceTime);
             }
@@ -32,7 +32,7 @@ namespace Business.Concrete
 
         public IDataResult<Color> GetById(int colorId)
         {
-            if (DateTime.Now.Hour == 22)
+            if (DateTime.Now.Hour == 02)
             {
                 return new ErrorDataResult<Color>(Messages.MaintanceTime);
             }
