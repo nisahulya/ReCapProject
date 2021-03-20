@@ -78,6 +78,27 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>(_carDal.GetAll(c=>c.BrandId==brandId),Messages.CarGottenByBrandId);
         }
 
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByBrandId(int brandId)
+        {
+            if (DateTime.Now.Hour == 02)
+            {
+                return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintanceTime);
+            }
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailsByBrandId(c=>c.BrandId==brandId), Messages.CarGottenByBrandId);
+        }
+
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByColorId(int colorId)
+        {
+            if (DateTime.Now.Hour == 02)
+            {
+                return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintanceTime);
+            }
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailsByColorId(c => c.ColorId == colorId), Messages.CarGottenByColorId);
+        }
+
+
+
         public IDataResult<List<Car>> GetCarsByColorId(int colorId)
         {
             if (DateTime.Now.Hour == 02)
