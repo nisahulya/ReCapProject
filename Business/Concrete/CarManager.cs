@@ -14,6 +14,7 @@ using Entities.DTOs;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -117,6 +118,20 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails(), Messages.CarDetailsGotten);
         }
 
+        public IDataResult<List<CarDetailDto>> GetCarDetailsByCarId(int carId)
+        {
+            if (DateTime.Now.Hour == 02)
+            {
+                return new ErrorDataResult<List<CarDetailDto>>(Messages.MaintanceTime);
+            }
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(c => c.CarId == carId).ToList());
+        }
+
+        public IDataResult<List<CarDetailDto>> GetAllCarDetailsByFilter(int brandId, int colorId)
+        {
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetailsByCarId().Where(c => c.BrandId == brandId && c.ColorId == colorId).ToList());
+        }
+
 
         [PerformanceAspect(5)]
         public IDataResult<Car> GetById(int carId)
@@ -140,5 +155,7 @@ namespace Business.Concrete
 
             return null;
         }
+
+        
     }
 }
