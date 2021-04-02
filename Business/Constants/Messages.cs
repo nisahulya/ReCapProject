@@ -110,5 +110,12 @@ namespace Business.Constants
         public static string UserAlreadyExists = "Kullanıcı mevcut";
         public static string AccessTokenCreated = "Access token oluşturuldu";
         public static string RentalDetailsGotten = "Kiralama detayları getirildi";
+
+        public static string CreditCardNumberAllreadyExists = "Kredi Kartı Numarası Mevcut";
+        public static string CartPaymentsUpdated = "Kredi Kartı Numarası ile Ödeme işlemi Güncellendi";
+        public static string CartPaymentsDeleted = "Kredi Kartı Numarası ile Ödeme işlemi Silindi";
+        public static string CartPaymentsAdded = "Kredi Kartı Numarası ile Ödeme işlemi Eklendi";
+        public static string GetCartPaymentsByCustomerIdListed = "Kredi Kartı Numarası ile Ödeme işlemi Müşteri Numarasına Göre Listelendi";
+        public static string CartPaymentsListed = "Kredi Kartı Numarası ile Ödeme işlemleri Listelendi";
     }
 }

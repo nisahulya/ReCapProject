@@ -48,6 +48,9 @@ namespace Business.DependencyResolvers.Autofac
                 {
                     Selector = new AspectInterceptorSelector()
                 }).SingleInstance();
+
+            builder.RegisterType<CartPaymentManager>().As<ICartPaymentService>().SingleInstance();
+            builder.RegisterType<EfCartPaymentDal>().As<ICartPaymentDal>().SingleInstance();
         }
     }
 }
