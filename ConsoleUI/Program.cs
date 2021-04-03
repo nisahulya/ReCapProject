@@ -99,7 +99,10 @@ namespace ConsoleUI
             RentalManager rentalManager = new RentalManager(new EfRentalDal());
             //rentalManager.Add(new Rental { CarId = 1, CustomerId = 1, RentalId = 1, RentDate = new DateTime(2010,11,11)  , ReturnDate=null  });
             ///rentalManager.Add(new Rental { CarId = 1, CustomerId = 2, RentalId = 2, RentDate = new DateTime(2010, 12, 11), ReturnDate = new DateTime(2010, 12, 12) });
-            
+
+
+            CartPaymentManager cartPaymentManager = new CartPaymentManager(new EfCartPaymentDal());
+            cartPaymentManager.Add(new CartPayment { CustomerId=1 , CardholderFirstNameLastName="Nisa Dastan", CardValidationValue="123", CreditCardNumber="1234567891113152", ExtractofAccount=12, ValidThru="121" });
         }
     }
 }
