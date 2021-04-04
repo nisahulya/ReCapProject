@@ -21,7 +21,7 @@ namespace Business.Abstract
 
         IDataResult<List<CarDetailDto>> GetAllCarDetailsByFilter(int brandId, int colorId);
 
-
+        IDataResult<List<CarForRentalDto>> GetCarForRentalByCarId(int carId);
 
         IResult Add(Car car);
         IResult Update(Car car);

@@ -22,15 +22,17 @@ namespace DataAccess.Concrete.EntityFramework
                              on c.BrandId equals b.BrandId
                              join o in context.Colors
                              on c.ColorId equals o.ColorId
-                             select new CarDetailDto { 
+                             select new CarDetailDto
+                             {
                                  CarId = c.CarId,
                                  Description = c.Description,
                                  BrandName = b.BrandName,
-                                 BrandId= b.BrandId,
+                                 BrandId = b.BrandId,
                                  ColorId = o.ColorId,
                                  ColorName = o.ColorName,
                                  ModelYear = c.ModelYear,
-                                 DailyPrice = c.DailyPrice};
+                                 DailyPrice = c.DailyPrice
+                             };
                 return result.ToList();
             }
         }
@@ -103,6 +105,32 @@ namespace DataAccess.Concrete.EntityFramework
                                  ColorName = o.ColorName,
                                  ModelYear = c.ModelYear,
                                  DailyPrice = c.DailyPrice
+                             };
+                return result.ToList();
+            }
+        }
+
+        public List<CarForRentalDto> GetCarForRentalByCarId()
+        {
+            using (ReCapContext context = new ReCapContext())
+            {
+                var result = from c in context.Cars
+                             join b in context.Brands
+                             on c.BrandId equals b.BrandId
+                             join co in context.Colors
+                             on c.ColorId equals co.ColorId
+                             select new CarForRentalDto
+                             {
+                                 CarId = c.CarId,
+                                 CarName = c.CarName,
+                                 BrandName = b.BrandName,
+                                 ColorName = co.ColorName,
+                                 DailyPrice = c.DailyPrice,
+                                 Description = c.Description,
+                                 isRented = c.isRented,
+                                 ModelYear = c.ModelYear,
+                                 BrandId = b.BrandId,
+                                 ColorId = co.ColorId
                              };
                 return result.ToList();
             }

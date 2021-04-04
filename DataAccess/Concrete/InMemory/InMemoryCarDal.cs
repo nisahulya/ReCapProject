@@ -78,6 +78,11 @@ namespace DataAccess.Concrete.InMemory
             throw new NotImplementedException();
         }
 
+        public List<CarForRentalDto> GetCarForRentalByCarId()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Car car)
         {
            Car carToUpdate = _cars.SingleOrDefault(c=>c.CarId  == car.CarId);

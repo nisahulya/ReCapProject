@@ -156,6 +156,10 @@ namespace Business.Concrete
             return null;
         }
 
-        
+        public IDataResult<List<CarForRentalDto>> GetCarForRentalByCarId(int carId)
+        {
+            return new SuccessDataResult<List<CarForRentalDto>>(_carDal.GetCarForRentalByCarId().Where(c => c.CarId == carId).ToList());
+        }
+
     }
 }
