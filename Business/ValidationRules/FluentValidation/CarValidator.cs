@@ -14,6 +14,8 @@ namespace Business.ValidationRules.FluentValidation
             RuleFor(c => c.DailyPrice).GreaterThan(0);
             RuleFor(c => c.DailyPrice).GreaterThanOrEqualTo(100).When(c => c.BrandId == 1);
             RuleFor(c => c.Description).Must(StarWithA);
+            RuleFor(c => c.MinFindeks).InclusiveBetween(0, 1900);
+
         }
 
         private bool StarWithA(string arg)

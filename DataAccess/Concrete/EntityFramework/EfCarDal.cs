@@ -130,7 +130,9 @@ namespace DataAccess.Concrete.EntityFramework
                                  isRented = c.isRented,
                                  ModelYear = c.ModelYear,
                                  BrandId = b.BrandId,
-                                 ColorId = co.ColorId
+                                 ColorId = co.ColorId,
+                                 MinFindeks = c.MinFindeks
+
                              };
                 return result.ToList();
             }

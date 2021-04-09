@@ -15,11 +15,15 @@ namespace Business.Concrete
     public class RentalManager : IRentalService
     {
         IRentalDal _rentalDal;
+        ICarService _carService;
+        ICustomerService _customerService;
 
 
-        public RentalManager(IRentalDal rentalDal)
+        public RentalManager(IRentalDal rentalDal, ICarService carService, ICustomerService customerService)
         {
             _rentalDal = rentalDal;
+            _carService = carService;
+            _customerService = customerService;
         }
 
 
@@ -62,6 +66,17 @@ namespace Business.Concrete
         {
             _rentalDal.Update(rental);
             return new SuccessResult(Messages.RentalUpdated);
+        }
+
+        public IResult CheckIfFindeks(int carId, int customerId)
+        {
+            var customer = _customerService.GetByUserId(customerId).Data;
+            var car = _carService.GetById(carId).Data;
+            if (customer.Findeks <= car.MinFindeks)
+            {
+                return new ErrorResult(Messages.NotEnoughFindeks);
+            }
+            return new SuccessResult();
         }
     }
 }

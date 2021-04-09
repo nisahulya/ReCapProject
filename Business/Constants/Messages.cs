@@ -117,5 +117,7 @@ namespace Business.Constants
         public static string CartPaymentsAdded = "Kredi Kartı Numarası ile Ödeme işlemi Eklendi";
         public static string GetCartPaymentsByCustomerIdListed = "Kredi Kartı Numarası ile Ödeme işlemi Müşteri Numarasına Göre Listelendi";
         public static string CartPaymentsListed = "Kredi Kartı Numarası ile Ödeme işlemleri Listelendi";
+
+        public static string NotEnoughFindeks = "Findeks Puanınız bu aracı kiralamak için yeterli değil";
     }
 }

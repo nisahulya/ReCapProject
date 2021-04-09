@@ -24,5 +24,7 @@ namespace Entities.Concrete
 
         public string CarName { get; set; }
 
+        public int MinFindeks { get; set; }
+
     }
 }

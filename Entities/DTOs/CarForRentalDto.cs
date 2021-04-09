@@ -17,5 +17,7 @@ namespace Entities.DTOs
         public string Description { get; set; }
         public bool isRented { get; set; }
         public string CarName { get; set; }
+        public int MinFindeks { get; set; }
+
     }
 }
