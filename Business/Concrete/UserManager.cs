@@ -8,6 +8,7 @@ using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -15,10 +16,12 @@ namespace Business.Concrete
     public class UserManager : IUserService
     {
         IUserDal _userDal;
+        ICustomerService _customerService;
 
-        public UserManager(IUserDal userDal)
+        public UserManager(IUserDal userDal,ICustomerService customerService)
         {
             _userDal = userDal;
+            _customerService = customerService;
         }
 
         public IDataResult<List<OperationClaim>> GetClaims(User user)
@@ -36,6 +39,37 @@ namespace Business.Concrete
         public IDataResult<User>  GetByMail(string email)
         {
             return new SuccessDataResult<User>(_userDal.Get(u => u.Email == email), Messages.UserGottenByMail);
+        }
+
+        public IDataResult<List<User>> GetAll()
+        {
+            return new SuccessDataResult<List<User>>(_userDal.GetAll());
+        }
+
+        public IResult Update(User user)
+        {
+            _userDal.Update(user);
+            return new SuccessResult(Messages.UserUpdated);
+        }
+
+        public IResult Delete(User user)
+        {
+            _userDal.Delete(user);
+            return new SuccessResult(Messages.UserDeleted);
+        }
+
+        public IDataResult<User> GetByUserId(User user)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Id == user.Id));
+        }
+
+        public IResult CheckIfCustomer(int userId)
+        {
+            if (!_customerService.GetAll().Data.Any(u => u.UserId == userId))
+            {
+                return new ErrorResult();
+            }
+            return new SuccessResult();
         }
     }
 }
