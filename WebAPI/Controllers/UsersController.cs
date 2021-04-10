@@ -53,10 +53,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("getbyuserid")]
+        [HttpGet("getuser")]
         public IActionResult Get([FromBody] User user)
         {
-            var result = _userService.GetByUserId(user);
+            var result = _userService.GetUser(user);
             if (result.Success)
             {
                 return Ok(result);

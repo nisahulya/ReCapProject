@@ -58,9 +58,14 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UserDeleted);
         }
 
-        public IDataResult<User> GetByUserId(User user)
+        public IDataResult<User> GetUser(User user)
         {
             return new SuccessDataResult<User>(_userDal.Get(u => u.Id == user.Id));
+        }
+
+        public IDataResult<User> GetById(int userId)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Id == userId), Messages.UserGottenById);
         }
 
         public IResult CheckIfCustomer(int userId)
