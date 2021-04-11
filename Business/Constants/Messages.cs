@@ -119,5 +119,11 @@ namespace Business.Constants
         public static string CartPaymentsListed = "Kredi Kartı Numarası ile Ödeme işlemleri Listelendi";
 
         public static string NotEnoughFindeks = "Findeks Puanınız bu aracı kiralamak için yeterli değil";
+        public static string Added = "Eklendi";
+        public static string Deleted = "Silindi";
+        public static string DeletedByCarId = "Car Id'ye göre Silindi";
+        public static string NotExist = "Yok";
+        public static string Updated = "Güncellendi";
+        public static string AlreadyExist = "Zaten Var";
     }
 }
